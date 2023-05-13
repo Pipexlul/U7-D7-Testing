@@ -49,4 +49,23 @@ describe("Operaciones CRUD de cafes", () => {
       expect(invalidCall.statusCode).toBe(400);
     });
   });
+
+  describe("Chequear ruta PUT /cafes/:id", () => {
+    it("Deberia devolver un status code de 400 si se intenta actualizar un cafe enviando un id en los parametros que es distinto del id en el payload", async () => {
+      const idParam = 2;
+      const idPayload = 3;
+      const newName = "Cafe editado";
+
+      const invalidCall = await app
+        .put(`/cafes/${idParam}`)
+        .send({ id: idPayload, nombre: newName });
+
+      const validCall = await app
+        .put(`/cafes/${idParam}`)
+        .send({ id: idParam, nombre: newName });
+
+      expect(invalidCall.statusCode).toBe(400);
+      expect(validCall.statusCode).not.toBe(400);
+    });
+  });
 });

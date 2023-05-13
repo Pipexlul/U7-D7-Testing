@@ -1,7 +1,5 @@
 /** @type {import('jest').Config} */
-const config = {
+export default {
   verbose: true,
   transform: {},
 };
-
-module.exports = config;
