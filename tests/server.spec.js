@@ -25,4 +25,24 @@ describe("Operaciones CRUD de cafes", () => {
       expect(response.statusCode).toBe(404);
     });
   });
+
+  describe("Chequear ruta POST /cafes", () => {
+    const validCafe = {
+      id: 5,
+      nombre: "Test cafe",
+    };
+
+    const invalidCafe = {
+      id: 4,
+      nombre: "Ya existe",
+    };
+
+    it("Deberia devolver un status code de 201 al crear un cafe con id nueva y status code 400 si la id ya existe", async () => {
+      const validCall = await app.post("/cafes").send(validCafe);
+      const invalidCall = await app.post("/cafes").send(invalidCafe);
+
+      expect(validCall.statusCode).toBe(201);
+      expect(invalidCall.statusCode).toBe(400);
+    });
+  });
 });
