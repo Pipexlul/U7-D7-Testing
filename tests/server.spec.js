@@ -12,6 +12,7 @@ describe("Operaciones CRUD de cafes", () => {
       expect(response.statusCode).toBe(200);
       expect(Array.isArray(response.body)).toBe(true);
       expect(response.body.length).toBeGreaterThan(0);
+      expect(response.body[0]).toBeInstanceOf(Object);
     });
   });
 
