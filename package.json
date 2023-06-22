@@ -1,12 +1,12 @@
 {
-  "name": "d7-testing",
+  "name": "u7-d7-testing",
   "version": "1.0.0",
   "description": "",
   "main": "./src/index.js",
   "scripts": {
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --forceExit",
-    "start": "node ./index.js",
-    "watch": "npx nodemon ./index.js"
+    "start": "node ./src/index.js",
+    "watch": "npx nodemon ./src/index.js"
   },
   "author": {
     "name": "Felipe Guajardo",
