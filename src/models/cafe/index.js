@@ -1,5 +1,11 @@
-import cafes from "./cafes.json" assert { type: "json" };
+import original from "./cafes.json" assert { type: "json" };
+
+let cafes = structuredClone(original);
 let latestId = cafes.sort((a, b) => b.id - a.id)[0].id;
+
+const resetDatabase = (req, res, next) => {
+  cafes = structuredClone(original);
+};
 
 const getCafe = (id) => {
   const cafe = cafes.find((c) => c.id === id);
@@ -83,4 +89,5 @@ export default {
   addCafe,
   modifyCafe,
   deleteCafe,
+  resetDatabase,
 };
